@@ -3,7 +3,7 @@ import click
 import logging
 from pathlib import Path
 from dotenv import find_dotenv, load_dotenv
-
+from src.data.securite_routiere import convert_csv_to_parquet
 
 @click.command()
 @click.argument('input_filepath', type=click.Path(exists=True))
@@ -14,6 +14,9 @@ def main(input_filepath, output_filepath):
     """
     logger = logging.getLogger(__name__)
     logger.info('making final data set from raw data')
+    csv_path = r"C:\Users\hatim\Documents\Analyse_de_donnee_avec_python\securite_routiere\data\raw\carcteristiques-2021.csv"
+    parquet_path = r"C:\Users\hatim\Documents\Analyse_de_donnee_avec_python\securite_routiere\data\interim\carcteristiques-2021.parquet"
+    convert_csv_to_parquet(csv_path, parquet_path)
 
 
 if __name__ == '__main__':
@@ -28,4 +31,6 @@ if __name__ == '__main__':
     load_dotenv(find_dotenv())
 
     main()
+
+
     

@@ -1,7 +1,8 @@
 import pandas as pd
 
-# Lecture du fichier CSV en utilisant la fonction read_csv() de pandas
-df = pd.read_csv(r"C:\Users\hatim\Documents\Analyse_de_donnee_avec_python\securite_routiere\data\raw\carcteristiques-2021.csv", sep=";")
+def convert_csv_to_parquet(csv_file_path, parquet_file_path):
+    df = pd.read_csv(csv_file_path, sep=";")
+    df.to_parquet(parquet_file_path)
 
-# Enregistrement du dataframe en format parquet dans le dossier data/interim
-df.to_parquet(r"C:\Users\hatim\Documents\Analyse_de_donnee_avec_python\securite_routiere\data\interim/carcteristiques-2021.parquet")
+
+
